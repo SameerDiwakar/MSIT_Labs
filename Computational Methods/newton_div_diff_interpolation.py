@@ -5,5 +5,6 @@ def interpolate(y,target,lst,divdiff,seconddivdiff):
     
 divdiff = []
 seconddivdiff = [] 
-for i in range(len(lst[0])):
-    divdiff[i] = lst[i+1]-lst[i]
+for i in range(len(lst[0])-1):
+    divdiff[i] = (lst[1][i+1]-lst[1][i])/(lst[0][i+1]-lst[0][i])
+    
