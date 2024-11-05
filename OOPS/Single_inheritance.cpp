@@ -17,15 +17,14 @@ class Truck : public car{
     public:
     string trucktype;
     void getTruck(){
-        cout << brand << "T " <<trucktype;
+        cout <<"Truck Brand: " << brand << " " << "Truck Type: " <<trucktype;
     }
-    Truck(int speed, string brand){
-        car(a)
+    Truck(int speed, string brand,string trucktype) : car(speed,brand){
+        this->trucktype = trucktype;
     }
 };
 int main() {
-    Truck Mahi(120,"TechMahindra");
-    Mahi.trucktype = "H1";
+    Truck Mahi(120,"TechMahindra","Container");
     car v(240,"Volvo");
     Mahi.getTruck();
     
