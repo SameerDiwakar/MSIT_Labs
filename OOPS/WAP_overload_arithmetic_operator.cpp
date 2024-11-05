@@ -1,20 +1,28 @@
 #include <iostream>
 using namespace std;
-class newclass{
+class Complex{
+    int real,img;
     public:
-    int num;
-    newclass(int num){
-        this->num = num;
+    Complex(int r , int i){
+        real = r;
+        img = i;
     }
-    newclass operator+(newclass &obj2){
-        this->num += obj2.num;
-        return *this;
+    Complex operator-(){
+        return Complex(-real,-img);
+    }
+    void display(){
+        cout << real << "+" << img<<"i";
     }
 };
+
 int main() {
-    newclass o1(4),o2(56);
-    o1+o2;
-    cout << o1.num << " ";
+    Complex c(3,4);
+    Complex b = -c;
+    cout << "Original Complex Number: ";
+    c.display();
+    cout<<endl;
+    cout <<"Negated complex Number: ";
+    b.display();
     
     return 0;
 }
