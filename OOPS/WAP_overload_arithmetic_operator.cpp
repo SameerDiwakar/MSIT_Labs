@@ -10,6 +10,9 @@ class Complex{
     Complex operator-(){
         return Complex(-real,-img);
     }
+    void operator-(Complex obj1){
+        this->real = (this->real) - (obj1.real);
+    }
     void display(){
         cout << real << "+" << img<<"i";
     }
@@ -23,6 +26,11 @@ int main() {
     cout<<endl;
     cout <<"Negated complex Number: ";
     b.display();
+    b-c;
+    cout << "Negated complex Number after subtraction: ";
+    b.display();
+
     
     return 0;
 }
+//this one

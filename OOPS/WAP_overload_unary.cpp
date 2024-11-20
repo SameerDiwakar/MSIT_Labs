@@ -10,16 +10,17 @@ class newclass{
     void operator++(){
         this->num += 100;
     }
-    newclass operator++(int) { // Store current state
+    void operator++(int) { // Store current state
+        cout << "This is unary postfix";
         this->num += 190000;     
-        return *this;// Return old state
+        // Return old state
     }
     void operator--(){
         this->num /= 10;
     }
-    newclass operator--(int) { // Store current state
+    void operator--(int) { // Store current state
         this->num /= 100;     
-        return *this;// Return old state
+        // Return old state
     }
 };
 int main() {

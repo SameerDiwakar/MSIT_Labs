@@ -8,8 +8,8 @@ public:
     virtual void draw() = 0;  // This makes the class abstract
 
     // Virtual destructor
-    virtual ~Shape() {
-        cout << "Shape destroyed." << endl;
+    virtual ~Shape(){
+        cout << "Shape destructor called" << endl;
     }
 };
 

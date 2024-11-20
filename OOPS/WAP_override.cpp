@@ -25,7 +25,8 @@ int main() {
 
     // Base class pointer pointing to a Car object
     vehicle = &car;
-    vehicle->display();  // Calls Car's overridden method
+    vehicle->display();
+    car.display();  // Calls Car's overridden method
 
     return 0;
 }
