@@ -4,7 +4,7 @@ using namespace std;
 int i = 0;
 double ans;
 double f(double n){
-    return n * exp(n) - 3;
+    return 4*n * exp(n) - 3;
 }
 
 double bisect(double a, double b, int digit){
