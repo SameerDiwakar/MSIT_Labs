@@ -1,10 +1,11 @@
 #include <stdio.h>
-#define SIZE 3
+#define SIZE 5
 int items[SIZE];
 int front = -1,rear = -1;
 
 int overflow(){
-    if ((front == (rear+1)%SIZE) || (front = 0 && rear == SIZE-1)) return 1;
+    if ((front == (rear+1)%SIZE) || (front = 0 && rear == SIZE-1)) return 1;//size recycle
+    
 }
 int underflow(){
     if (front == -1){
