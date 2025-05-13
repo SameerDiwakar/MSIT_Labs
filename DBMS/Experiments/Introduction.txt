@@ -25,3 +25,29 @@ Rule 2 (Guaranteed Access): Every value in a database is accessible using a uniq
 Rule 3 (Systematic Treatment of Nulls): Null values are supported to represent missing or inapplicable information.
 
 
+Rule 7 (High-Level Insert, Update, Delete): Data manipulation operations must be possible through SQL.
+
+Popular RDBMS Systems:
+Oracle Database:
+A powerful, enterprise-grade RDBMS widely used in businesses for large-scale data management. Known for its robustness, scalability, and advanced features like PL/SQL (Procedural Language/SQL), Oracle offers support for cloud-based databases and AI integrations.
+
+PostgreSQL:
+An open-source RDBMS known for its flexibility and compliance with modern standards. It supports features like JSON, geographic data (PostGIS), and high levels of data integrity.
+
+MySQL:
+Open-source and widely used in web applications. Known for its reliability, simplicity, and integration with platforms like WordPress. Used by companies like Facebook, YouTube, and Twitter.
+
+Oracle
+Oracle was founded in 1977 by Larry Ellison, Bob Miner, and Ed Oates. Initially called "Relational Software Inc.," the company launched its first database product, Oracle v2, in 1979. Oracle was the first RDBMS to support SQL. Over the years, it has evolved to include features like Real Application Clusters (RAC), Oracle Cloud, and AI-powered tools.
+
+Versions:
+
+Oracle v2 (1979): First release of the Oracle database, supporting basic relational features.
+
+Oracle 6 (1988): Introduced PL/SQL, allowing procedural programming.
+
+Oracle 8i (1999): Focused on internet applications, introduced Java support.
+
+Oracle 11g (2007): Added automatic memory management and diagnostics.
+
+Oracle 21c/23c (2021/2023): Latest versions focus on multi-model databases, blockchain tables, and AI-driven performance enhancements.
