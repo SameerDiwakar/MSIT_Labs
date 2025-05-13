@@ -54,3 +54,144 @@ WHERE dept_id = (SELECT dept_id FROM Department WHERE dept_name = 'CSE');
 | 101    | Ram  | Male   | 35  | 60000.00  | D1      |
 | 103    | Ravi | Male   | 40  | 70000.00  | D1      |
 ```
+
+# SQL Queries and Results
+
+## Query Q2: 
+Display the average salary of all employees.
+
+```sql
+SELECT AVG(salary) AS avg_salary FROM Employee;
+```
+
+### Result:
+```
+| avg_salary    |
+|---------------|
+| 60333.333333  |
+```
+
+## Query Q3: 
+Display the average salary department-wise.
+
+```sql
+SELECT dept_id, AVG(salary) AS avg_salary
+FROM Employee
+GROUP BY dept_id;
+```
+
+### Result:
+```
+| dept_id | avg_salary    |
+|---------|---------------|
+| D1      | 65000.000000  |
+| D2      | 67500.000000  |
+| D3      | 48500.000000  |
+```
+
+## Query Q4: 
+Display the average salary department-wise if the average is greater than ₹50,000.
+
+```sql
+SELECT dept_id, AVG(salary) AS avg_salary
+FROM Employee
+GROUP BY dept_id
+HAVING AVG(salary) > 50000;
+```
+
+### Result:
+```
+| dept_id | avg_salary    |
+|---------|---------------|
+| D1      | 65000.000000  |
+| D2      | 67500.000000  |
+```
+
+## Query Q5: 
+Display the count of faculty in the department(s) in which "Ram" is an employee.
+
+```sql
+SELECT dept_id, COUNT(*) AS faculty_count
+FROM Faculty
+WHERE dept_id = (SELECT dept_id FROM Employee WHERE name = 'Ram')
+GROUP BY dept_id;
+```
+
+### Result:
+```
+| dept_id | faculty_count |
+|---------|---------------|
+| D1      | 2             |
+```
+
+## Query Q6: 
+Display the total salaries of each department in increasing order.
+
+```sql
+SELECT dept_id, SUM(salary) AS total_salary
+FROM Employee
+GROUP BY dept_id
+ORDER BY total_salary ASC;
+```
+
+### Result:
+```
+| dept_id | total_salary |
+|---------|--------------|
+| D3      | 97000.00     |
+| D1      | 130000.00    |
+| D2      | 135000.00    |
+```
+
+## Query Q7: 
+Display the count of female and male employees each.
+
+```sql
+SELECT gender, COUNT(*) AS count
+FROM Employee
+GROUP BY gender;
+```
+
+### Result:
+```
+| gender | count |
+|--------|-------|
+| Male   | 3     |
+| Female | 3     |
+```
+
+## Query Q8: 
+Display the name of the department having AVG(age) > 30.
+
+```sql
+SELECT dept_id
+FROM Employee
+GROUP BY dept_id
+HAVING AVG(age) > 30;
+```
+
+### Result:
+```
+| dept_id |
+|---------|
+| D1      |
+| D2      |
+| D3      |
+```
+
+## Query Q9: 
+Display department details of the employees having AVG(salary) > ₹4,00,000 and is a female.
+
+```sql
+SELECT d.*
+FROM Department d
+JOIN Employee e ON d.dept_id = e.dept_id
+WHERE e.gender = 'Female'
+GROUP BY d.dept_id
+HAVING AVG(e.salary) > 4000000;
+```
+
+### Result:
+```
+Empty set (0.01 sec)
+```
