@@ -1,1 +1,29 @@
+Experiment 9
 
+Aim: Study of PL/SQL.
+
+PL/SQL: Stands for Procedural Language/Structured Query Language. It is a block-structured language developed by Oracle that allows developers to combine the power of SQL with procedural programming constructs. The PL/SQL language enables efficient data manipulation and control-flow logic, all within the Oracle Database.
+
+History:
+
+* Early 1980s - SQL becomes the standard for database management.
+* 1992 - PL/SQL as an extension to SQL, adding procedural capabilities.
+* Mid-1990s - PL/SQL becomes used for writing stored procedures, triggers, functions.
+* 2000s - PL/SQL is adopted in enterprise applications and databases.
+* 2010s-Present - Oracle continues to enhance PL/SQL with new features and optimizations for cloud and performance.
+
+Need of PL/SQL:
+
+* Nature: SQL is declarative, focusing on what needs to be done, while PL/SQL is procedural, specifying how tasks should be executed.
+* Execution: SQL executes as a single query or statement, whereas PL/SQL runs as a block of code with multiple statements.
+* Purpose: SQL is used for data manipulation and schema operations, while PL/SQL is used for creating complete applications with procedures, functions, and logic.
+* Focus: SQL primarily manipulates and queries data, while PL/SQL builds complex application logic directly within the database.
+
+Features of SQL:
+
+* It is basically a procedural language, which provides the functionality of decision-making, iteration, and many more features of procedural programming languages.
+* PL/SQL can execute a number of queries in one block using single command.
+* One can create a PL/SQL unit such as procedures, functions, packages, triggers, and types, which are stored in the database for reuse by applications.
+* PL/SQL provides a feature to handle the exception which occurs in PL/SQL block known as exception handling block.
+* Applications written in PL/SQL are portable to computer hardware or operating system where Oracle is operational.
+* PL/SQL Offers extensive error checking.
