@@ -1,0 +1,120 @@
+Here is the text extracted from all 4 images you uploaded:
+
+---
+
+### **EXPERIMENT – 4**
+
+**AIM**: Practicing DDL, DML Commands.
+
+* Dept(D\_id, D\_name, D\_strength)
+* Emp\_Dept(emp\_id, D\_id, E\_name, DateOfJoin)
+
+#### **Dept table**:
+
+```
++------+-----------+------------+
+| d_id | d_name    | d_strength |
++------+-----------+------------+
+| 1    | HR        | 40         |
+| 2    | Finance   | 55         |
+| 3    | IT        | 70         |
+| 4    | Marketing | 30         |
+| 5    | Sales     | 60         |
++------+-----------+------------+
+```
+
+#### **Emp\_Dept table**:
+
+```
++--------+--------+--------+-------------+
+| emp_id | d_id   | e_name | dateofjoin  |
++--------+--------+--------+-------------+
+| 101    | 1      | Aman   | 2020-05-10  |
+| 102    | 2      | Sita   | 2018-06-15  |
+| 103    | 3      | Rahul  | 2022-03-20  |
+| 104    | 4      | Karan  | 2019-07-25  |
+| 105    | 5      | Meera  | 2021-01-30  |
++--------+--------+--------+-------------+
+```
+
+---
+
+### **Q1. Select E\_name having ‘a’ as the second last character.**
+
+```sql
+mysql> SELECT e_name FROM emp_dept WHERE e_name LIKE '%a_';
++--------+
+| e_name |
++--------+
+| Aman   |
+| Karan  |
++--------+
+```
+
+---
+
+### **Q2. Add Column GENDER and AGE to Emp\_dept table and make it NOT NULL attribute.**
+
+```sql
+mysql> ALTER TABLE emp_dept
+    -> ADD COLUMN gender VARCHAR(10) NOT NULL,
+    -> ADD COLUMN age INT NOT NULL;
+```
+
+---
+
+### **Q3. Add a constraint to the table Emp\_dept by setting age > 20.**
+
+```sql
+mysql> ALTER TABLE emp_dept
+    -> ADD CONSTRAINT age_check CHECK (age > 20);
+```
+
+---
+
+### **Q4. Display the details of employee in increasing order of Date of Joining.**
+
+```sql
+mysql> SELECT * FROM emp_dept ORDER BY dateofjoin ASC;
++--------+--------+--------+-------------+--------+-----+
+| emp_id | d_id   | e_name | dateofjoin  | gender | age |
++--------+--------+--------+-------------+--------+-----+
+| 102    | 2      | Sita   | 2018-06-15  | Female | 28  |
+| 104    | 4      | Karan  | 2019-07-25  | Male   | 30  |
+| 101    | 1      | Aman   | 2020-05-10  | Male   | 25  |
+| 105    | 5      | Meera  | 2021-01-30  | Female | 22  |
+| 103    | 3      | Rahul  | 2022-03-20  | Male   | 23  |
++--------+--------+--------+-------------+--------+-----+
+```
+
+---
+
+### **Q5. Display the details of youngest employee.**
+
+```sql
+mysql> SELECT * FROM emp_dept WHERE age = (SELECT MIN(age) FROM emp_dept);
++--------+--------+--------+-------------+--------+-----+
+| emp_id | d_id   | e_name | dateofjoin  | gender | age |
++--------+--------+--------+-------------+--------+-----+
+| 105    | 5      | Meera  | 2021-01-30  | Female | 22  |
++--------+--------+--------+-------------+--------+-----+
+```
+
+---
+
+### **Q6. Display the details of department having D\_strength > 50.**
+
+```sql
+mysql> SELECT * FROM dept WHERE d_strength > 50;
++------+----------+------------+
+| d_id | d_name   | d_strength |
++------+----------+------------+
+| 2    | Finance  | 55         |
+| 3    | IT       | 70         |
+| 5    | Sales    | 60         |
++------+----------+------------+
+```
+
+---
+
+Let me know if you’d like this as a downloadable `.txt` or `.docx` file.
