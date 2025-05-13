@@ -1,0 +1,27 @@
+Example 1
+Aim: Introduction to Relational Database Management System
+DBMS (Database Management System)
+A DBMS is a software system that allows users to define, create, maintain, and control access to databases. It provides an interface between the database and its users or application programs, ensuring data consistency, security, and organization
+
+Examples: Oracle, PostgreSQL, MySQL, MongoDB.
+Functions:
+Data storage and retrieval.
+Transaction management.
+Security and access control.
+RDBMS (Relational Database Management System)
+An RDBMS is a type of DBMS that organizes data into related tables (rows and columns) and is based on the relational model introduced by E.F. Codd. Relationships between tables are established using keys, such as primary keys and foreign keys.
+
+Characteristics:
+Data is stored in structured formats (tables).
+Supports SQL (Structured Query Language) for data manipulation.
+Ensures data integrity and relationships among tables.
+Examples: Oracle, PostgreSQL, MySQL.
+
+Codd's Rules:
+E.F. Codd proposed 12 rules to define an ideal relational database system. Popular RDBMS systems aim to follow these rules. Key rules include:
+
+Rule 1 (Information Rule): All data is stored in tables, and each column represents an attribute.
+Rule 2 (Guaranteed Access): Every value in a database is accessible using a unique combination of table name, column name, and primary key.
+Rule 3 (Systematic Treatment of Nulls): Null values are supported to represent missing or inapplicable information.
+
+
