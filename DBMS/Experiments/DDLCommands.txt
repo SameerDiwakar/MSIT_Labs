@@ -1,0 +1,47 @@
+
+### **Experiment 3**
+
+**Aim:** Understanding DDL Commands: **CREATE, ALTER, DROP, TRUNCATE**
+
+---
+
+**Questions:**
+
+1. Create table Course(c\_id, c\_name, strength, hod)
+        Student(s\_id, sname, age, gender, address, email, c\_id)
+
+2. Enter data in tables Course and Student
+
+3. Add columns phone no and marks to the student
+
+4. Add the data to newly added columns
+
+5. Truncate the tables
+
+6. Drop the tables
+
+7. Explain the difference between delete, drop and truncate using examples
+   **Ans:**
+   **DELETE:**
+
+* **Purpose**: Removes specific rows from a table.
+* **Operation**: Row-level operation.
+* **Rollback**: Can be rolled back (DML command).
+
+---
+
+**Example:**
+
+```sql
+-- Assuming a table called "Students"
+SELECT * FROM Students;
+```
+
+```
++----+--------+-----+
+| ID | Name   | Age |
++----+--------+-----+
+| 1  | John   | 21  |
++----+--------+-----+
+```
+
