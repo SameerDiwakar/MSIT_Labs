@@ -34,4 +34,78 @@ SQL commands are categorized based on their functionality:
   * **CREATE**: Create new objects (e.g., tables, databases).
   * **ALTER**: Modify existing database objects.
   * **DROP**: Delete objects like tables or databases.
- 
+
+TRUNCATE:Remove all rows from table without logging individual row deletions
+
+Data Manipulation Language (DML):
+Manipulates data stored in the database.
+
+Commands:
+
+INSERT: Add new data to a table.
+
+UPDATE: Modify existing data.
+
+DELETE: Remove specific data from a table.
+
+TRUNCATE: Remove all rows from a table without logging individual row deletions.
+
+Data Query Language (DQL):
+Used to query and retrieve data from the database.
+
+Command:
+
+SELECT: Retrieve data from tables with optional filtering, sorting, and grouping.
+
+Data Control Language (DCL):
+Manages user access and permissions.
+
+Commands:
+
+GRANT: Provide privileges to users.
+
+REVOKE: Remove privileges from users.
+
+Transaction Control Language (TCL):
+Manages transactions within a database.
+
+Commands:
+
+COMMIT: Save changes permanently.
+
+ROLLBACK: Revert changes to the last save point.
+
+SAVEPOINT: Set a point within a transaction to which changes can be rolled back.
+
+Data Types in SQL:
+SQL supports various data types to define the kind of data a column can store:
+
+Numeric Data Types:
+INT or INTEGER: Whole numbers.
+
+FLOAT, REAL, or DOUBLE: Floating-point numbers.
+
+DECIMAL or NUMERIC: Precise decimal numbers (e.g., salaries, prices).
+
+String Data Types:
+CHAR(n): Fixed-length string (e.g., CHAR(10) stores 10 characters).
+
+VARCHAR(n): Variable-length string (e.g., VARCHAR(50) stores up to 50 characters).
+
+TEXT: Large text data.
+
+Date and Time Data Types:
+DATE: Stores date values (e.g., YYYY-MM-DD).
+
+TIME: Stores time values (e.g., HH:MM:SS).
+
+TIMESTAMP: Stores date and time together.
+
+Boolean Data Type:
+BOOLEAN: Stores TRUE, FALSE, or NULL.
+
+Binary Data Types:
+BLOB (Binary Large Object): Stores binary data like images and files.
+
+
+
