@@ -1,1 +1,103 @@
+# Experiment 6: Using DUAL Table, String and Mathematical Functions in SQL
 
+## Aim:
+To understand and use the DUAL table, string functions, and mathematical functions in SQL.
+
+---
+
+## Q1. What is a DUAL Table? Describe its Schema.
+
+The DUAL table is a special one-row, one-column table present in Oracle databases. It is used for:
+- Selecting system values
+- Performing calculations
+- Calling functions without referencing actual tables
+
+### Schema of DUAL Table:
+```
+Name    Null?    Type
+------  ------   ------------
+DUMMY            VARCHAR2(1)
+```
+
+The table contains:
+- A single column named "DUMMY" of type VARCHAR2(1)
+- A single row with value 'X'
+
+---
+
+## Q2. Display System Date & Time using DUAL.
+
+### Query for System Date:
+```sql
+SELECT sysdate FROM dual;
+```
+
+### Query for System Timestamp:
+```sql
+SELECT systimestamp FROM dual;
+```
+
+### Sample Output:
+```
+SYSDATE     SYSTIMESTAMP
+----------  -----------------------------------
+11-MAR-25   11-MAR-25 03.38.05.321000 PM +05:30
+```
+
+---
+
+## Q3. Using Mathematical Functions with DUAL (6 Examples)
+
+### Query:
+```sql
+SELECT
+    power(2, 3) as power_result,
+    sqrt(25) as square_root,
+    abs(-15) as absolute_value,
+    round(3.678, 2) as rounded_value,
+    ceil(4.2) as ceil_value,
+    floor(4.8) as floor_value
+FROM dual;
+```
+
+### Output:
+```
+POWER_RESULT SQUARE_ROOT ABSOLUTE_VALUE ROUNDED_VALUE CEIL_VALUE FLOOR_VALUE
+-----------  -----------  -------------  ------------  ---------  ----------
+      8           5            15           3.68           5           4
+```
+
+---
+
+## Q4. Using String Functions with DUAL (6 Examples)
+
+### Query:
+```sql
+SELECT
+    upper('oracle') as uppercase,
+    lower('ORACLE') as lowercase,
+    initcap('hello world') as init_cap,
+    length('database') as string_length,
+    substr('helloSQL', 1, 5) as substring,
+    replace('SQL is fun', 'fun', 'awesome') as replace_function
+FROM dual;
+```
+
+### Output:
+```
+UPPERCASE LOWERCASE INIT_CAP      STRING_LENGTH SUBSTRING REPLACE_FUNCTION
+--------  --------  ------------  ------------  --------  ----------------
+ORACLE    oracle    Hello World            8    hello     SQL is awesome
+```
+
+---
+
+### Key Concepts Demonstrated:
+1. **DUAL Table**: Special Oracle table for calculations and function calls
+2. **Date Functions**: `sysdate`, `systimestamp`
+3. **Mathematical Functions**: 
+   - `power()`, `sqrt()`, `abs()`
+   - `round()`, `ceil()`, `floor()`
+4. **String Functions**:
+   - Case conversion: `upper()`, `lower()`, `initcap()`
+   - String manipulation: `length()`, `substr()`, `replace()`
