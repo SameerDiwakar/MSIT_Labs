@@ -1,1 +1,156 @@
 
+# Experiment 8: Working with Views in SQL
+
+## Aim:
+To understand and implement views in SQL, including their creation, modification, and differences from physical tables.
+
+---
+
+## Q1. Views and Their Types in SQL
+
+### Definition:
+A view is a virtual table that represents the result of a stored query. Views:
+- Don't store data physically
+- Dynamically fetch data from base tables when queried
+- Provide data security by restricting column/row access
+
+### Types of Views:
+1. **Updatable View**:
+   - Allows INSERT, UPDATE, DELETE operations on base table
+   - Requirements:
+     - Based on a single table
+     - Doesn't contain:
+       - Aggregation functions
+       - Joins
+       - DISTINCT
+       - GROUP BY
+       - HAVING clause
+
+2. **Non-Updatable View**:
+   - Read-only views
+   - Don't support data modification operations
+
+---
+
+## Q2. Creating and Populating the emp Table
+
+### Table Creation:
+```sql
+CREATE TABLE emp (
+    empid NUMBER,
+    name VARCHAR2(20),
+    salary NUMBER,
+    dept VARCHAR2(20)
+);
+```
+
+### Sample Data:
+```
+| EMPID | NAME  | SALARY | DEPT     |
+|-------|-------|--------|----------|
+| 101   | Ram   | 50000  | HR       |
+| 102   | Shyam | 55000  | IT       |
+| 103   | Mohan | 48000  | Finance  |
+| 104   | Sohan | 60000  | IT       |
+```
+
+---
+
+## Q3. Creating a View (emp_dept)
+
+### Query:
+```sql
+CREATE VIEW emp_dept AS 
+SELECT empid, dept FROM emp;
+```
+
+### View Contents:
+```
+| EMPID | DEPT     |
+|-------|----------|
+| 101   | HR       |
+| 102   | IT       |
+| 103   | Finance  |
+| 104   | IT       |
+```
+
+---
+
+## Q4. Creating a New Table (emp2) from emp
+
+### Query:
+```sql
+CREATE TABLE emp2 AS 
+SELECT empid, name, dept FROM emp;
+```
+
+### Table Contents:
+```
+| EMPID | NAME  | DEPT     |
+|-------|-------|----------|
+| 101   | Ram   | HR       |
+| 102   | Shyam | IT       |
+| 103   | Mohan | Finance  |
+| 104   | Sohan | IT       |
+```
+
+---
+
+## Q5. View vs. Table (CTAS) Comparison
+
+| Feature          | CREATE TABLE AS SELECT (CTAS)          | VIEW                          |
+|------------------|----------------------------------------|-------------------------------|
+| Definition       | Creates a new physical table           | Creates a virtual table       |
+| Storage          | Stores data permanently                | No separate storage           |
+| Data Sync        | No automatic sync with original table  | Always reflects current data  |
+| Modification     | Independent data modifications         | Modifies base table (if updatable) |
+| Performance      | Faster queries (pre-computed)          | Slower (executes query each time) |
+| Storage Space    | Consumes additional space              | No additional space used      |
+
+---
+
+## Q6-Q9: View Operations
+
+### Q6. Insert via View:
+```sql
+INSERT INTO emp_dept VALUES(105, 'Marketing');
+```
+*Result*: Adds new row to base emp table (name and salary will be NULL)
+
+### Q7. Update via View:
+```sql
+UPDATE emp_dept SET dept='Marketing' WHERE empid=101;
+```
+*Result*: Updates department in base table for employee 101
+
+### Current emp Table:
+```
+| EMPID | NAME  | SALARY | DEPT      |
+|-------|-------|--------|-----------|
+| 101   | Ram   | 50000  | Marketing |
+| 102   | Shyam | 55000  | IT        |
+| 103   | Mohan | 48000  | Finance   |
+| 104   | Sohan | 60000  | IT        |
+| 105   | NULL  | NULL   | Marketing |
+```
+
+### Q8. Delete All Rows via View:
+```sql
+DELETE FROM emp_dept;
+```
+*Result*: Removes all rows from base emp table
+
+### Q9. Drop View:
+```sql
+DROP VIEW emp_dept;
+```
+*Result*: View definition is removed (base table remains unaffected)
+
+---
+
+## Key Takeaways:
+1. Views provide dynamic, always-current data from base tables
+2. Updatable views must meet specific criteria
+3. CTAS creates independent physical copies of data
+4. Views are powerful for security and simplifying complex queries
+5. Modifications through views affect the underlying base tables
