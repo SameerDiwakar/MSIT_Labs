@@ -45,3 +45,97 @@ SELECT * FROM Students;
 +----+--------+-----+
 ```
 
+Here is the complete extracted text from the two images you provided:
+
+---
+
+**-- Delete the student with ID = 2**
+
+```sql
+DELETE FROM Students WHERE ID = 2;
+
+SELECT * FROM Students;
+```
+
+```
++----+--------+-----+
+| ID | Name   | Age |
++----+--------+-----+
+| 1  | John   | 21  |
+| 3  | Alex   | 20  |
++----+--------+-----+
+```
+
+* Only the specified row (Mary) is deleted.
+* The table structure remains intact.
+
+---
+
+**2. DROP:**
+
+* **Purpose:** Completely removes a database object (e.g., table, view, database).
+* **Operation:** Object-level operation.
+* **Rollback:** Cannot be rolled back (DDL command).
+
+**Example:**
+
+\-- Drop the entire "Students" table
+
+```sql
+DROP TABLE Students;
+```
+
+\-- Trying to select data will fail because the table no longer exists
+
+```sql
+SELECT * FROM Students;
+```
+
+\-- Error: Table 'Students' doesn't exist
+
+---
+
+**3. TRUNCATE:**
+
+* **Purpose:** Removes all rows from a table but keeps the table structure intact.
+* **Operation:** Table-level operation.
+* **Rollback:** Cannot be rolled back (DDL command).
+* **Faster than DELETE** because it doesn't log individual row deletions.
+
+**Example:**
+
+\-- Assuming the "Students" table exists with data
+
+```sql
+SELECT * FROM Students;
+```
+
+```
++----+--------+-----+
+| ID | Name   | Age |
++----+--------+-----+
+| 1  | John   | 21  |
+| 2  | Mary   | 22  |
+| 3  | Alex   | 20  |
++----+--------+-----+
+```
+
+\-- Truncate the table
+
+```sql
+TRUNCATE TABLE Students;
+```
+
+```sql
+SELECT * FROM Students;
+```
+
+\-- The table is empty
+
+```
++----+--------+-----+
+-- No rows found
+```
+
+* The table structure remains, but all data is wiped.
+ 
