@@ -1,0 +1,56 @@
+# EXPERIMENT - 5
+
+## AIM: 
+Performing join & nested queries and use orderby, groupby, and aggregate functions.
+
+### Tables:
+1. **Employee(emp_id, name, gender, age, salary, dept_id)**
+2. **Department(dept_id, dept_name)**
+3. **Faculty(faculty_id, emp_id, dept_id)**
+
+### Employee Table Data:
+```
+| emp_id | name  | gender | age | salary    | dept_id |
+|--------|-------|--------|-----|-----------|---------|
+| 101    | Ram   | Male   | 35  | 60000.00  | D1      |
+| 102    | Sita  | Female | 28  | 55000.00  | D2      |
+| 103    | Ravi  | Male   | 40  | 70000.00  | D1      |
+| 104    | Priya | Female | 30  | 52000.00  | D3      |
+| 105    | Mohan | Male   | 45  | 80000.00  | D2      |
+| 106    | Neha  | Female | 32  | 45000.00  | D3      |
+```
+
+### Department Table Data:
+```
+| dept_id | dept_name |
+|---------|-----------|
+| D1      | CSE       |
+| D2      | ECE       |
+| D3      | ME        |
+```
+
+### Faculty Table Data:
+```
+| dept_id | dept_name |
+|---------|-----------|
+| D1      | CSE       |
+| D2      | ECE       |
+| D3      | ME        |
+```
+
+### Query Q1: 
+Display employee details of the "CSE" department.
+
+```sql
+SELECT *
+FROM Employee
+WHERE dept_id = (SELECT dept_id FROM Department WHERE dept_name = 'CSE');
+```
+
+### Query Result:
+```
+| emp_id | name | gender | age | salary    | dept_id |
+|--------|------|--------|-----|-----------|---------|
+| 101    | Ram  | Male   | 35  | 60000.00  | D1      |
+| 103    | Ravi | Male   | 40  | 70000.00  | D1      |
+```
