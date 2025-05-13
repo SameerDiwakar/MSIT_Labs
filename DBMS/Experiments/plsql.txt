@@ -27,3 +27,78 @@ Features of SQL:
 * PL/SQL provides a feature to handle the exception which occurs in PL/SQL block known as exception handling block.
 * Applications written in PL/SQL are portable to computer hardware or operating system where Oracle is operational.
 * PL/SQL Offers extensive error checking.
+
+
+# Structure of PL/SQL block:
+```
+DECLARE
+    Declaration statements;
+BEGIN
+    Executable statements
+EXCEPTIONS
+    Exception handling statements
+END;
+```
+
+## PL/SQL identifiers:
+Identifiers in PL/SQL are names used to represent various elements like variables, constants, procedures, functions, and more. They must follow these rules:
+- Start with a letter (A-Z, a-z) or an underscore (_).
+- Can contain letters, numbers, and underscores.
+- Cannot exceed 30 characters.
+- Cannot be reserved keywords (e.g., SELECT, INSERT, etc.).
+
+## TRIGGER IN PL/SQL:
+A trigger in PL/SQL is a stored procedure that automatically executes (or "fires") when a specific event occurs in the database, such as an INSERT, UPDATE, or DELETE operation on a table or view. Types of Triggers:
+- BEFORE Trigger: Executes before the triggering event (insert, update, delete).
+- AFTER Trigger: Executes after the triggering event.
+- INSTEAD OF Trigger: Used for views to replace the default action by custom logic.
+
+Example: We want to create a trigger that automatically logs changes (inserts) into a log_table whenever a new record is inserted into the employees table.
+
+```
+CREATE OR REPLACE TRIGGER log_employee_insert
+AFTER INSERT ON employees
+FOR EACH ROW
+BEGIN
+    INSERT INTO log_table (log_message, log_date)
+    VALUES ('New employee inserted: ' || :NEW.employee_name, SYSDATE);
+END;
+```
+This image shows information about PL/SQL functions and stored procedures:
+
+## FUNCTIONS IN PL/SQL:
+A function in PL/SQL is a stored subprogram that returns a single value. It can be used to perform calculations, manipulate data, or return computed values based on input parameters.
+
+Example: Function to Calculate Area of a Rectangle
+```
+CREATE OR REPLACE FUNCTION calculate_area (
+    length IN NUMBER,
+    width IN NUMBER
+)
+RETURN NUMBER
+IS
+    area NUMBER;
+BEGIN
+    area := length * width;
+    RETURN area;
+END;
+```
+
+## STORED PROCEDURE IN PL/SQL:
+A stored procedure in PL/SQL is a named, precompiled collection of one or more SQL statements and PL/SQL code that can be executed to perform a specific task. It is stored in the database and can be invoked by applications, scripts, or other PL/SQL blocks.
+
+Example: Stored Procedure to Update Employee Salary
+```
+CREATE OR REPLACE PROCEDURE update_salary (
+    emp_id IN NUMBER,
+    new_salary IN NUMBER
+)
+IS
+BEGIN
+    UPDATE employees
+    SET salary = new_salary
+    WHERE employee_id = emp_id;
+    COMMIT;
+END;
+```
+
