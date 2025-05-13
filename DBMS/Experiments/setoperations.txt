@@ -138,3 +138,64 @@ a.E_ID a.E_NAME a.DEPARTMENT_ID b.E_ID b.E_NAME b.DEPARTMENT_ID
 4. **CROSS JOIN**: Produces Cartesian product of all rows from joined tables
 
 Note: Syntax may vary slightly between database systems (Oracle uses MINUS, while others may use EXCEPT).
+
+# Experiment 7: SQL Set Operations (Continued)
+
+## 3. Intersect Operation
+
+### Query:
+```sql
+SELECT * FROM a INTERSECT SELECT * FROM b;
+```
+
+### Result:
+```
+E_ID  E_NAME  DEPARTMENT_ID
+-----  ------  -------------
+103   Mohan   3
+104   Sohan   4
+```
+
+### Explanation:
+- Returns only rows that exist in both Table A and Table B
+- Shows common employees (Mohan and Sohan) who appear in both tables
+
+## 4. Cross Product (Cartesian Product)
+
+### Query:
+```sql
+SELECT * FROM a CROSS JOIN b;
+```
+
+### Result:
+```
+A.E_ID A.E_NAME A.DEPARTMENT_ID B.E_ID B.E_NAME B.DEPARTMENT_ID
+-----  -------  --------------  -----  -------  --------------
+101    Ram      1               103    Mohan    3
+101    Ram      1               104    Sohan    4
+101    Ram      1               105    Aryan    5
+101    Ram      1               106    Ramesh   6
+102    Shyam    2               103    Mohan    3
+102    Shyam    2               104    Sohan    4
+102    Shyam    2               105    Aryan    5
+102    Shyam    2               106    Ramesh   6
+103    Mohan    3               103    Mohan    3
+103    Mohan    3               104    Sohan    4
+103    Mohan    3               105    Aryan    5
+103    Mohan    3               106    Ramesh   6
+104    Sohan    4               103    Mohan    3
+104    Sohan    4               104    Sohan    4
+104    Sohan    4               105    Aryan    5
+104    Sohan    4               106    Ramesh   6
+```
+
+### Explanation:
+- Combines each row from Table A with every row from Table B
+- Produces 16 rows (4 rows in A × 4 rows in B)
+- Useful for creating all possible combinations between two tables
+
+## Key Observations:
+1. **Intersect** is valuable for finding common records between datasets
+2. **Cross Join** generates a complete combination of all rows
+3. The number of rows in cross join equals the product of rows in both tables
+4. These operations are fundamental for data analysis and comparison tasks
