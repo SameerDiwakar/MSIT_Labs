@@ -1,1 +1,69 @@
+# Experiment 10: Implementing Triggers in PL/SQL
 
+## Aim:
+To understand and implement database triggers in PL/SQL that automatically execute in response to specific database events.
+
+---
+
+## Understanding Triggers
+
+### Definition:
+A trigger is a special stored procedure that automatically executes ("fires") when a specified database event occurs.
+
+### Primary Uses:
+1. **Enforce business rules** (data validation, integrity checks)
+2. **Maintain audit trails** (track who changed what and when)
+3. **Prevent invalid transactions** (enforce complex constraints)
+
+---
+
+## Trigger Types
+
+### Based on Timing:
+| Type    | Execution Point                     | Common Uses                     |
+|---------|-------------------------------------|---------------------------------|
+| BEFORE  | Executes **before** the triggering event | Data validation, value modification |
+| AFTER   | Executes **after** the triggering event  | Auditing, logging, notifications |
+
+### Based on Events:
+- **INSERT** (when new rows are added)
+- **UPDATE** (when existing rows are modified)
+- **DELETE** (when rows are removed)
+
+---
+
+## Practical Example: Employee Insert Trigger
+
+### Trigger Code:
+```sql
+CREATE OR REPLACE TRIGGER emp_insert
+AFTER INSERT ON emp
+FOR EACH ROW
+BEGIN
+    DBMS_OUTPUT.PUT_LINE('New employee inserted successfully: ' || :new.name);
+END;
+/
+```
+
+### Key Components:
+1. `AFTER INSERT` - Specifies when the trigger fires
+2. `ON emp` - The table being monitored
+3. `FOR EACH ROW` - Makes it a row-level trigger
+4. `:new.name` - References the newly inserted value
+
+---
+
+## Testing the Trigger
+
+### Test Insert Statement:
+```sql
+INSERT INTO emp VALUES(1100, 'Engineers', 85000, 'HR');
+```
+
+### Expected Output:
+```
+New employee inserted successfully: Engineers
+1 row created.
+```
+
+--- 
