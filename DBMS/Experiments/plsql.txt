@@ -102,3 +102,27 @@ BEGIN
 END;
 ```
 
+
+
+
+
+
+
+Here is the extracted text from the image:
+
+---
+
+DIFFERENCE BETWEEN FUNCTION AND STORED PROCEDURE:
+
+A function always returns a value using the return statement while a procedure may return one or more values through parameters or may not return at all. Although, OUT parameters can still be used in functions, they are not advisable neither are there cases where one might find a need to do so. Using OUT parameter restricts a function from being used in a SQL Statement.
+
+Functions can be used in typical SQL statements like SELECT, INSERT, UPDATE, DELETE, MERGE, while procedures can’t.
+
+Functions are normally used for computations where as procedures are normally used for executing business logic.
+
+Oracle provides the provision of creating “Function Based Indexes” to improve the performance of the subsequent SQL statement. This applies when performing the function on an indexed column in where clause of a query.
+
+---
+
+
+
