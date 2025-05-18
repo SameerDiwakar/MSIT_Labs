@@ -8,3 +8,18 @@
   System.out.println(arr[a-1]);
 
 }
+
+
+class Main {
+    public static int fibo(int a){
+        if (a  < 2){
+            return a;
+        }
+        return fibo(a-1) + fibo(a-2);
+        
+    }
+    public static void main(String[] args) {
+        int x = fibo(10);
+        System.out.println(x);
+    }
+}
