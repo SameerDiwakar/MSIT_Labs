@@ -1,4 +1,5 @@
 #include <iostream>
+#include <vector>
 #include <algorithm>
 
 using namespace std;
@@ -16,34 +17,29 @@ public:
     }
 };
 
-void fcfs(Process processes[], int size) {
-    // Sort by arrival time (using bubble sort for simplicity)
-    for (int i = 0; i < size; i++) {
-        for (int j = 0; j < size - i - 1; j++) {
-            if (processes[j].atime > processes[j + 1].atime) {
-                swap(processes[j], processes[j + 1]);
-            }
-        }
-    }
+void fcfs(vector<Process> &processes) {
+    // Sort by arrival time
+    sort(processes.begin(), processes.end(), [](Process a, Process b) {
+        return a.atime < b.atime;
+    });
 
     int totaltime = 0;
-    for (int i = 0; i < size; i++) {
-        totaltime += processes[i].btime;
-        cout << "Process ID: " << processes[i].pid
-             << " Arrival Time: " << processes[i].atime
-             << " Burst Time: " << processes[i].btime
-             << " Waiting Time: " << totaltime - processes[i].btime - processes[i].atime
-             << " Turnaround Time: " << totaltime - processes[i].atime << endl;
+    for (auto &process : processes) {
+        totaltime += process.btime;
+        cout << "Process ID: " << process.pid
+             << " Arrival Time: " << process.atime
+             << " Burst Time: " << process.btime
+             << " Waiting Time: " << totaltime - process.btime - process.atime
+             << " Turnaround Time: " << totaltime - process.atime << endl;
     }
 }
 
 int main() {
-    Process processes[] = {
+    vector<Process> processes = {
         Process(1, 0, 5),
         Process(3, 2, 6),
         Process(2, 1, 7)
     };
-    int size = sizeof(processes) / sizeof(processes[0]);
-    fcfs(processes, size);
+    fcfs(processes);
     return 0;
 }
