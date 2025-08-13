@@ -44,10 +44,10 @@ void fcfs(vector<Process> &processes) {
 
 int main() {
     vector<Process> processes = {
-        Process(1, 0, 4),
-        Process(2, 1, 3),
-        Process(3, 2, 2),
-        Process(4, 3, 1)
+        Process(1, 0, 5),
+        Process(2, 1, 7),
+        Process(3, 2, 6),
+        Process(4, 3, 9)
     };
     fcfs(processes);
     return 0;
