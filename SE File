@@ -1,0 +1,167 @@
+Experiment 3
+Aim: To perform the function-oriented diagram: Level 0 and Level 1 Data Flow Diagram (DFD) 
+
+Theory
+A Data Flow Diagram (DFD) is a graphical representation of the flow of data within a system, illustrating how data moves between processes, data stores, and external entities. In software design, DFDs help model the functional aspects of a system by showing how input data is transformed into output data through various processing stages.
+1. Level 0 DFD: Also known as a "context diagram," this is the highest level and represents a very simple, top-level view of the system being represented. It shows the major processes, data flows, and data stores in the system, without providing any details about the internal workings of these processes. It is designed to be an at-a-glance view, showing the system as a single high-level process, with its relationship to external entities. It should be easily understood by a wide audience, including stakeholders, business analysts, data analysts, and developers. 
+2. Level 1 DFD: This level provides a more detailed breakout of pieces of the context level diagram. It breaks down the system's single process node into subprocesses. Each sub-process is depicted as a separate process on the level 1 DFD. The data flows and data stores associated with each sub-process are also shown.
+
+Representation of diagram
+S.no	Symbol	Name	Description
+
+1	
+
+Process	
+Transformations of data
+
+
+2	
+
+Data Flow	
+ Movement of data
+
+
+3	
+
+Data Store
+     	
+Storage of data
+
+4	
+
+External Entity	
+External actors/users
+
+
+
+ 
+Level 0 DFD for Job and Internship Portal
+
+
+ 
+Level 1 DFD for Job and Internship Portal
+
+
+Explanation
+The Level-0 DFD of a Job and Internship Portal illustrates the system as a single process interacting with external entities like Students, Employers, and Admins. Students browse and apply for jobs or access resources, while the system provides job listings and status updates. Employers post jobs, manage applications, and view candidate data through the portal. The admin manages data, approves jobs, and monitors reports via the admin dashboard. The system facilitates communication between these entities to streamline job applications, postings, and administrative oversight.
+The Level-1 DFD of a Job and Internship Portal expands on the single process from Level-0 by breaking it into specific sub-processes. Key processes include Authentication, User Management, Job Management, Application Management, and Resource Module. Students interact with the system by registering, logging in, browsing jobs, applying, and accessing resources. Employers register, post or edit jobs, and view applications. The Authentication process handles login and credentials, while User Management updates and maintains user profiles. Job Management stores and retrieves job listings, while Application Management saves and tracks applications. The Resource Module manages additional learning or support resources. Data flows between these processes and external entities, ensuring secure handling of credentials, job postings, applications, and resources.
+
+Conclusion
+In conclusion, a Level-0 DFD of a Job and Internship Portal provides a simplified, high-level view of the system’s main data interactions. It highlights how the system processes user requests, such as browsing or applying for jobs, posting vacancies, and managing applications, while communicating with external entities like students, employers, and admins. This diagram is essential for understanding the overall data flow before diving into detailed process analysis. This foundational view helps stakeholders and developers quickly grasp the portal’s core functionality.
+Level-1 DFD of a Job and Internship Portal provides a more detailed view of the system by breaking it into specific sub-processes such as authentication, user management, job management, application management, and resource handling. It illustrates how students, employers, and admins interact with different modules while data is securely stored and retrieved across databases. This detailed breakdown helps stakeholders and developers understand the functional flow of the system, ensuring clarity before moving to design and implementation stages.
+
+
+
+
+
+
+
+
+
+
+
+Experiment 4
+Aim: To perform the user’s view analysis for the suggested system: Use case diagram
+
+Theory
+Use case diagrams are a type of behavioural diagram that show the interactions between a system and its users, or actors. They are used to represent and model the functionality of a system. The main purpose of a use case diagram is to capture the functional requirements of a system. They are often used during the analysis and design phases of software development.
+ The components of a use case diagram are: 
+•	Actor: An actor is a person or entity that interacts with the system to achieve a goal. Actors can be people, organizations, or external systems. 
+•	System: The system is the software or hardware that is being modelled. The system is represented by a rectangle in a use case diagram. 
+•	Use Case: A use case is a sequence of interactions between an actor and the system that results in the actor achieving a goal. Use cases are represented by ellipses in a use case diagram. 
+•	Relation: A relation shows how two actors or use cases interact with each other. Relations can be communication relations or association relations. Communication relations are shown by lines with arrows. Association relations are shown by lines with diamonds. 
+•	Generalization: A generalization relation shows that a use case is a more specialized version of another use case. Generalization relations are shown by lines with an open triangle at the end. 
+•	Include: An include relation shows that one use case includes the functionality of another use case. Include relations are shown by dashed lines with an "include" label at the end. 
+•	Exclude: An exclude relation shows that one use case excludes the functionality of another use case. Exclude relations are shown by dashed lines with an "exclude" label at the end.
+
+Representation of diagram
+
+   
+
+
+ 
+				Use Case Diagram of Job and Internship Portal
+Explanation
+The Use Case Diagram of the Job and Internship Portal illustrate the interactions between three main actors — Students, Employers, and Admins — and the system.
+•	Students can register/login, browse jobs, apply for jobs, access resources, and view their application status.
+•	Employers can register/login, post new jobs, edit or delete existing jobs, and view applications submitted by students.
+•	Admins manage the overall system by approving or rejecting job postings, managing resources, handling user accounts, generating/viewing reports, and logging in for administrative control.
+
+Conclusion
+In conclusion, the Use Case Diagram of the Job and Internship Portal provide a clear overview of the system’s functionalities from the perspective of its users. It maps the interactions of students, employers, and admins with the portal, ensuring that all critical use cases such as job postings, applications, resource access, and administrative tasks are represented. This high-level view helps stakeholders quickly understand user roles and system requirements before moving into detailed design and development.
+Experiment 5
+Aim: To design and analyse the structural view of the suggested system: Class Diagram
+
+Theory
+Class diagrams are a type of UML (Unified Modelling Language) diagram used in software engineering to visually represent the structure and relationships of classes within a system i.e. used to construct and visualize object-oriented systems. Class diagrams provide a high-level overview of a system's design, helping to communicate and document the structure of the software. In UML, Class diagrams has following components: -
+•	Class Name
+•	Attributes 
+•	Methods 
+•	Visibility (public, private, protected)
+
+ 
+Class Diagram of Job & Internship Portal
+Explanation
+This diagram is a class diagram that provides a high-level overview of a job and internship portal. It shows the different entities within the system as classes, defining their attributes and the relationships between them. For instance, the student class represents the user looking for opportunities, with attributes like their name, email, and college. The Job class represents the postings themselves, with details such as title, location, and stipend.
+The diagram also illustrates how these entities interact. A Student applies for a Job, which is recorded in the Job Application class. Students can also bookmark jobs they find interesting, stored in the Job Bookmark class. Similarly, a student can register for an Event hosted by a university, with these interactions captured in the Event Registration class. This structured approach helps in understanding the system's architecture and the data flow between its various components.
+
+Conclusion
+Based on the class diagram, the system is designed to facilitate a comprehensive and interconnected ecosystem for job and internship seekers, recruiters, and educational institutions. It effectively models the key entities—Students, Employers, Jobs, and Universities—and their relationships. The diagram highlights the core functionalities of the portal, including job applications, event registrations, and job-posting management. Ultimately, this class diagram serves as a clear and concise blueprint for the software, demonstrating how all the different components work together to provide a holistic platform for career opportunities.
+
+
+
+
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+Experiment 6
+Aim: To design and analyse the dynamic behavioural and object-oriented views of the suggested system: State Chart Diagram and Object Diagram
+State Chart Diagram
+Theory
+State chart diagram describes the flow of control from one state to another state. States are defined as a condition in which an object exists and it changes when some event is triggered. The most important purpose of State chart diagram is to model lifetime of an object from creation to termination. State chart diagrams are also used for forward and reverse engineering of a system. However, the main purpose is to model the reactive system.
+Following are the main purposes of using State-chart diagrams: - 
+1. To model the dynamic aspect of a system. 
+2. To model the life time of a reactive system. 
+3. To describe different states of an object during its life time. 
+4. Define a state machine to model the states of an object.
+
+Representation of diagram
+ 
+
+ 
+State Chart Diagram for Job and Internship Portal
+
+Explanation
+This state chart diagram models the user's journey through a job and internship portal. The process begins with the Initial state, from which a user can transition to the Registered state after creating an account. Once registered, the user can perform a Login action, which moves them into the Logged In state. From here, the user has two primary paths: they can either Logout, leading to the Logged-Out state and eventually the Final State, or they can Select Jobs Section to start Browsing Jobs. While Browsing Jobs, a user can select a job to apply for, which transitions them to the Applying state. Within the Applying state, they can Submit Form to reach the Application Submitted state or go Back to Jobs to continue browsing. The diagram effectively visualizes the dynamic behaviour of a user's session, showing how different actions trigger transitions between distinct states of the system.
+
+Conclusion
+This state chart diagram provides a clear and intuitive conclusion about the user's interaction with the job portal. It visually demonstrates that the user's journey is a structured, sequential process that is governed by specific actions and events. The diagram's logical flow from Registered to Logged In, and then to key actions like Browsing Jobs and Applying, effectively summarizes the core user experience. Ultimately, the chart concludes that the user's session can either terminate by logging out or by successfully submitting an application, highlighting the two primary final outcomes for a user's engagement with the platform.
+
+Object Diagram
+Theory
+An Object Diagram can be referred to as a screenshot of the instances in a system and the relationship that exists between them. An object diagram in UML is useful because it provides a clear and visual representation of specific instances of classes and their relationships at a particular point in time, aiding in understanding and communicating the structure and interactions within a system. In other words, "An object diagram in the Unified Modelling Language (UML), is a diagram that shows a complete or partial view of the structure of a modelled system at a specific time".
+Object diagrams also have following components: - 
+•	Object or instance specifications 
+•	Attributes and values 
+•	Dependency Relationship 
+•	Association
+•	Aggregation & Composition
+ 
+Object Diagram for Job and Internship Portal
+
+Explanation
+This object diagram is a specific example of the class diagram for a job and internship portal. Instead of showing the general structure, it provides a snapshot of real data at a particular moment in time. The diagram visualizes specific objects like Student: Alice and Student: Bob, each with unique information. It also shows instances of jobs, an employer, a university, and an event. The lines connecting these objects represent the specific relationships between them, such as how Alice registers for the Career Fair and Bob applies for the "Software Engineer" job. Essentially, the diagram shows the system in a live state, confirming that the class diagram's abstract design can be implemented with concrete, real-world data.
+
+Conclusion
+This object diagram serves as a powerful conclusion to the system's design, as it validates the abstract model with a concrete, real-world example. It demonstrates that the relationships defined in the class diagram—such as registers, applies, and posts—are not just theoretical but can be instantiated with actual data for students, employers, jobs, and events. By showcasing a specific, interconnected scenario, the diagram proves that the system's architecture is robust and capable of handling the intended business logic, providing a clear and tangible representation of how the portal would function in practice.
