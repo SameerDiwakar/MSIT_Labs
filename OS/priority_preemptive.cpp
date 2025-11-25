@@ -97,43 +97,6 @@ method is mainly used when certain processes are more important and must be
 executed before others.
 
 -----------------------------------------------
-Non-Preemptive Priority Scheduling
------------------------------------------------
-
-In Non-Preemptive Priority Scheduling, once the CPU has been assigned to a 
-process, it cannot be taken away until the process completes its execution.
-Even if a new process arrives with a higher priority, the currently running 
-process continues until it finishes. After the CPU becomes free, the process 
-with the highest priority from the ready queue is selected next.
-
-Example:
-
-Processes:
-Process   AT   BT   Priority
-P1        0    5        2
-P2        1    3        1
-P3        2    4        3
-
-Gantt Chart (Non-Preemptive):
-P1 |-------| P2 |---| P3 |----|
-0         5     8     12
-
-Explanation:
-Since P1 arrives first, it starts running at time 0. P2 arrives later with 
-higher priority, but non-preemptive scheduling does not allow interruption, 
-so P1 completes first.
-
-Waiting Time:
-P1 = 0
-P2 = 5 – 1 = 4
-P3 = 8 – 2 = 6
-
-Turnaround Time:
-P1 = 5
-P2 = 7
-P3 = 10
-
------------------------------------------------
 Preemptive Priority Scheduling
 -----------------------------------------------
 
@@ -143,29 +106,42 @@ process is placed back into the ready queue and resumes later when it again
 becomes the highest-priority available process. This method gives faster response 
 to high-priority tasks.
 
+------------------------------------------------
 Example:
+------------------------------------------------
 
 Processes:
-Process   AT   BT   Priority
-P1        0    5        2
-P2        1    3        1
-P3        2    4        3
+Process   AT   BT  PR
+P1        0    5   2
+P2        1    3   1
+P3        2    4   3
 
-Gantt Chart (Preemptive):
-P1 |--| P2 |---| P1 |--| P3 |----|
-0    1    4     7     9     13
+Step-by-step execution (Non-preemptive Priority Scheduling):
 
-Explanation:
-P1 starts first, but at time 1, P2 arrives with a higher priority, so it 
-preempts P1. After P2 completes, P1 resumes, and after P1 finishes, P3 executes.
+1. At time 0: Only P1 has arrived. P1 priority = 2. But check all arrived processes at current time:
+   - Only P1 → execute P1? Wait, P2 arrives at time 1 with higher priority (1). So at time 1, CPU selects **P2** first.  
 
-Waiting Time:
-P1 = (1 – 0) + (7 – 4) = 4
-P2 = 0
-P3 = 9 – 2 = 7
+2. Execution order:
+   - At time 0: P1 starts but since non-preemptive, we usually select **process with highest priority among arrived processes** at CPU idle time.
+   - At time 0: P1 arrived, P2 not yet → execute P1.
+   - At time 5 (P1 finishes): P2 and P3 are available.
+     - P2 has highest priority (PR=1) → execute P2
+   - At time 8 (P2 finishes): Only P3 remains → execute P3.
 
-Turnaround Time:
-P1 = 9
-P2 = 3
-P3 = 11
+------------------------------------------------
+Gantt Chart (Non-preemptive Priority Scheduling):
+| P1 | P2 | P3 |
+0     5     8    12
+
+------------------------------------------------
+Completion Time (CT), Turnaround Time (TAT), Waiting Time (WT):
+
+PID   AT  BT  PR  CT  TAT  WT
+P1    0   5   2   8   8    3   (TAT = 8-0=8, WT = 8-5=3)
+P2    1   3   1   4   3    0   (TAT = 4-1=3, WT = 3-3=0)
+P3    2   4   3   12  10   6   (TAT = 12-2=10, WT = 10-4=6)
+
+------------------------------------------------
+Average Waiting Time  = (3 + 0 + 6)/3 = 3
+Average Turnaround Time = (8 + 3 + 10)/3 = 7
 */
