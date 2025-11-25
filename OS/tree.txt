@@ -1,0 +1,48 @@
+This file contains direct cloning of OS programs with curl
+
+curl "https://raw.githubusercontent.com/RedLordezh7Venom/MSIT_Labs/main/OS/fcfs.cpp" -O
+curl "https://raw.githubusercontent.com/RedLordezh7Venom/MSIT_Labs/main/OS/sjf_non_preemptive.cpp" -O
+curl "https://raw.githubusercontent.com/RedLordezh7Venom/MSIT_Labs/main/OS/sjf_preemptive.cpp" -O
+curl "https://raw.githubusercontent.com/RedLordezh7Venom/MSIT_Labs/main/OS/priority_non_preemptive.cpp" -O
+curl "https://raw.githubusercontent.com/RedLordezh7Venom/MSIT_Labs/main/OS/priority_preemptive.cpp" -O
+curl "https://raw.githubusercontent.com/RedLordezh7Venom/MSIT_Labs/main/OS/memory_allocation.cpp" -O
+curl "https://raw.githubusercontent.com/RedLordezh7Venom/MSIT_Labs/main/OS/readers_writers.cpp" -O
+curl "https://raw.githubusercontent.com/RedLordezh7Venom/MSIT_Labs/main/OS/roundrobin.cpp" -O
+curl "https://raw.githubusercontent.com/RedLordezh7Venom/MSIT_Labs/main/OS/producer_consumer.cpp" -O
+curl "https://raw.githubusercontent.com/RedLordezh7Venom/MSIT_Labs/main/OS/bankers.cpp" -O
+curl "https://raw.githubusercontent.com/RedLordezh7Venom/MSIT_Labs/main/OS/page_replacement_policy.cpp" -O
+curl "https://raw.githubusercontent.com/RedLordezh7Venom/MSIT_Labs/main/OS/file_organization.cpp" -O
+
+List of OS experiments:
+
+1. FCFS 
+fcfs.cpp
+
+2. SJF
+sjf_non_preemptive.cpp
+sjf_preemptive.cpp
+
+3. Priority Scheduling
+priority_non_preemptive.cpp
+priority_preemptive.cpp
+
+4. Memory allocation, best fit, worst fit, first fit
+memory_allocation.cpp
+
+5. Readers/Writers Problem
+readers_writers.cpp
+
+6. Round robin
+roundrobin.cpp
+
+7. Producer-Consumer using semaphores
+producer_consumer.cpp
+
+8.Banker's Algorithm
+bankers.cpp
+
+9.Page Replacement Policy
+page_replacement_policy.cpp
+
+10.File Organizatoin
+file_organization.cpp
