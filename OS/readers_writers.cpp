@@ -124,13 +124,23 @@ EXPERIMENT-6: Readers-Writers Problem
 ------------------------------------------------
 
 Definition:
-- Readers: Multiple readers can read the shared data **simultaneously** without causing inconsistency, as they do not modify the data.
-- Writers: Only **one writer** can access the shared data at a time, and no readers are allowed during writing, to prevent data corruption.
+The Readers-Writers Problem is a classical synchronization problem in operating systems. 
+It deals with scenarios where **multiple processes** want to access **shared data** simultaneously. 
+The challenge is to allow **concurrent reading** by multiple readers, while ensuring that **writing is exclusive**, 
+to prevent data inconsistency or corruption.
 
-Key Points:
-1. Multiple readers can read the data together.
-2. Writers require **exclusive access**.
-3. Synchronization is necessary to avoid **race conditions**.
+- Readers: Processes that only read the shared data. Multiple readers can access the data at the same time since 
+  they do not modify it, which ensures no conflicts occur between them.
+- Writers: Processes that modify or update the shared data. Only **one writer** is allowed to access the shared data 
+  at any time. During writing, no readers can access the data to prevent **race conditions** or data corruption.
+
+Key Points and Rules:
+1. **Concurrent Reading**: Multiple readers can read the data simultaneously without any issues.
+2. **Exclusive Writing**: Writers must have exclusive access; no other readers or writers can access the data during writing.
+3. **Synchronization**: Mechanisms like **mutexes, semaphores, or monitors** are used to coordinate access and prevent conflicts.
+4. **Priority Schemes**: Readers-first, writers-first, or fair access policies can be implemented depending on system requirements.
+5. **Race Conditions Prevention**: Proper synchronization ensures that the data remains consistent and no updates are lost.
+6. **Deadlock Avoidance**: Care must be taken to avoid deadlock situations when both readers and writers are waiting for each other.
 
 ------------------------------------------------
 Example Execution:
