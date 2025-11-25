@@ -78,3 +78,87 @@ int main() {
 
 // Average TAT = 7.33333
 // Average WT = 3.33333
+
+
+/*
+Priority Scheduling (Preemptive and Non-Preemptive)
+
+Priority Scheduling is a CPU scheduling technique where each process is assigned
+a priority value, and the CPU is allocated to the process with the highest 
+priority (usually, a lower priority number means higher priority). This scheduling
+method is mainly used when certain processes are more important and must be 
+executed before others.
+
+-----------------------------------------------
+Non-Preemptive Priority Scheduling
+-----------------------------------------------
+
+In Non-Preemptive Priority Scheduling, once the CPU has been assigned to a 
+process, it cannot be taken away until the process completes its execution.
+Even if a new process arrives with a higher priority, the currently running 
+process continues until it finishes. After the CPU becomes free, the process 
+with the highest priority from the ready queue is selected next.
+
+Example:
+
+Processes:
+Process   AT   BT   Priority
+P1        0    5        2
+P2        1    3        1
+P3        2    4        3
+
+Gantt Chart (Non-Preemptive):
+P1 |-------| P2 |---| P3 |----|
+0         5     8     12
+
+Explanation:
+Since P1 arrives first, it starts running at time 0. P2 arrives later with 
+higher priority, but non-preemptive scheduling does not allow interruption, 
+so P1 completes first.
+
+Waiting Time:
+P1 = 0
+P2 = 5 – 1 = 4
+P3 = 8 – 2 = 6
+
+Turnaround Time:
+P1 = 5
+P2 = 7
+P3 = 10
+
+-----------------------------------------------
+Preemptive Priority Scheduling
+-----------------------------------------------
+
+In Preemptive Priority Scheduling, the CPU can be taken away from the currently 
+running process if a new process arrives with a higher priority. The interrupted 
+process is placed back into the ready queue and resumes later when it again 
+becomes the highest-priority available process. This method gives faster response 
+to high-priority tasks.
+
+Example:
+
+Processes:
+Process   AT   BT   Priority
+P1        0    5        2
+P2        1    3        1
+P3        2    4        3
+
+Gantt Chart (Preemptive):
+P1 |--| P2 |---| P1 |--| P3 |----|
+0    1    4     7     9     13
+
+Explanation:
+P1 starts first, but at time 1, P2 arrives with a higher priority, so it 
+preempts P1. After P2 completes, P1 resumes, and after P1 finishes, P3 executes.
+
+Waiting Time:
+P1 = (1 – 0) + (7 – 4) = 4
+P2 = 0
+P3 = 9 – 2 = 7
+
+Turnaround Time:
+P1 = 9
+P2 = 3
+P3 = 11
+*/
