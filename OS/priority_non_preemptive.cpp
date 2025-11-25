@@ -125,40 +125,4 @@ Turnaround Time:
 P1 = 5
 P2 = 7
 P3 = 10
-
------------------------------------------------
-Preemptive Priority Scheduling
------------------------------------------------
-
-In Preemptive Priority Scheduling, the CPU can be taken away from the currently 
-running process if a new process arrives with a higher priority. The interrupted 
-process is placed back into the ready queue and resumes later when it again 
-becomes the highest-priority available process. This method gives faster response 
-to high-priority tasks.
-
-Example:
-
-Processes:
-Process   AT   BT   Priority
-P1        0    5        2
-P2        1    3        1
-P3        2    4        3
-
-Gantt Chart (Preemptive):
-P1 |--| P2 |---| P1 |--| P3 |----|
-0    1    4     7     9     13
-
-Explanation:
-P1 starts first, but at time 1, P2 arrives with a higher priority, so it 
-preempts P1. After P2 completes, P1 resumes, and after P1 finishes, P3 executes.
-
-Waiting Time:
-P1 = (1 – 0) + (7 – 4) = 4
-P2 = 0
-P3 = 9 – 2 = 7
-
-Turnaround Time:
-P1 = 9
-P2 = 3
-P3 = 11
 */
