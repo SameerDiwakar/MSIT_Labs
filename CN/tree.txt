@@ -14,14 +14,19 @@ star.pkt
 
 
 3. Telnet : done
+telnet.pkt
 
-4. IP and subnetting
+4. IP and subnetting : done
+subnetting.pkt
 
-5. Static routing
+5. Static routing : done
+staticrouting.pkt
 
-6. DHCP
+6. DHCP : done
+dhcp.pkt
 
 7. Implement DNS onto network topology : done
+dnsconfigure.pkt
 
 8. RIP: done
 RIPRouting.pkt
