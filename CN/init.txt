@@ -4,6 +4,31 @@ introduciton to network simulation tools
 
 cisco packet tracer
 
-installation , and creation of topologies (start, ring , bus hybrid
+2. installation , and creation of topologies (start, ring , bus hybrid : done
+
+bus.pkt
+hybrid.pkt
+ring.pkt
+star.pkt
 )
 
+
+3. Telnet : done
+
+4. IP and subnetting
+
+5. Static routing
+
+6. DHCP
+
+7. Implement DNS onto network topology : done
+
+8. RIP: done
+RIPRouting.pkt
+
+9. EIGRP:done
+eigrp.pkt
+
+10. NAT : done
+initially ran into version error, 8.2.2
+nat.pkt
