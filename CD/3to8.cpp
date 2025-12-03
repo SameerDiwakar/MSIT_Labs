@@ -386,49 +386,131 @@ A' -> bc | bd | ef*/
 
 [03-09-2025 23:02] Sameer: #6 Find left factor
 
-[17-09-2025 14:52] Sameer: #include <bits/stdc++.h>
+[17-09-2025 14:52] Sameer: 
+#include <iostream>
+#include <map>
+#include <set>
+#include <vector>
+#include <string>
+#include <algorithm>
 using namespace std;
 
-map<char, vector<string>> g;
-map<char, set<char>> firstSet, followSet;
-char start;
+map<char, set<char>> first_sets;
+map<char, set<char>> follow_sets;
+map<char, vector<string>> grammar;
+set<char> non_terminals;
+char start_symbol;
 
-// FIRST function
-set<char> FIRST(char X) {
-    if (!isupper(X)) return {X};
-    if (!firstSet[X].empty()) return firstSet[X];
-    for (string rhs : g[X]) {
-        bool eps = true;
-        for (char c : rhs) {
-            set<char> f = FIRST(c);
-            eps = f.count('#');
-            f.erase('#');
-            firstSet[X].insert(f.begin(), f.end());
-            if (!eps) break;
-        }
-        if (eps) firstSet[X].insert('#');
-    }
-    return firstSet[X];
+bool isNonTerminal(char c) {
+    return non_terminals.find(c) != non_terminals.end();
 }
 
-// FOLLOW function
-void FOLLOW(char X) {
-    for (auto &p : g) {
-        char A = p.first;
-        for (string rhs : p.second) {
-            for (int i = 0; i < rhs.size(); i++) {
-                if (rhs[i] == X) {
-                    if (i + 1 < rhs.size()) {
-                        set<char> f = FIRST(rhs[i + 1]);
-                        if (f.count('#')) {
-                            FOLLOW(A);
-                            followSet[X].insert(followSet[A].begin(), followSet[A].end());
+void computeFirst() {
+    bool changed = true;
+
+    while (changed) {
+        changed = false;
+
+        for (auto& rule : grammar) {
+            char lhs = rule.first;
+
+            for (string& prod : rule.second) {
+                if (prod == "e") {
+                    if (first_sets[lhs].find('e') == first_sets[lhs].end()) {
+                        first_sets[lhs].insert('e');
+                        changed = true;
+                    }
+                } else {
+                    char first_sym = prod[0];
+
+                    if (!isNonTerminal(first_sym)) {
+                        // Terminal
+                        if (first_sets[lhs].find(first_sym) == first_sets[lhs].end()) {
+                            first_sets[lhs].insert(first_sym);
+                            changed = true;
                         }
-                        f.erase('#');
-                        followSet[X].insert(f.begin(), f.end());
-                    } else if (A != X) {
-                        FOLLOW(A);
-                        followSet[X].insert(followSet[A].begin(), followSet[A].end());
+                    } else {
+                        // Non-terminal
+                        int before = first_sets[lhs].size();
+                        for (char c : first_sets[first_sym]) {
+                            if (c != 'e') {
+                                first_sets[lhs].insert(c);
+                            }
+                        }
+                        if (first_sets[lhs].size() > before) {
+                            changed = true;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+void computeFollow() {
+    // Rule 1: Add $ to start symbol
+    follow_sets[start_symbol].insert('$');
+
+    bool changed = true;
+
+    while (changed) {
+        changed = false;
+
+        for (auto& rule : grammar) {
+            char lhs = rule.first;
+
+            for (string& prod : rule.second) {
+                if (prod == "e") continue;
+
+                for (int i = 0; i < prod.length(); i++) {
+                    char symbol = prod[i];
+
+                    if (isNonTerminal(symbol)) {
+                        int before = follow_sets[symbol].size();
+
+                        if (i == prod.length() - 1) {
+                            // Rule 3: At end of production
+                            for (char c : follow_sets[lhs]) {
+                                follow_sets[symbol].insert(c);
+                            }
+                        } else {
+                            // Rule 2: Check symbols after current
+                            bool all_nullable = true;
+
+                            for (int j = i + 1; j < prod.length(); j++) {
+                                char next_sym = prod[j];
+
+                                if (!isNonTerminal(next_sym)) {
+                                    // Terminal
+                                    follow_sets[symbol].insert(next_sym);
+                                    all_nullable = false;
+                                    break;
+                                } else {
+                                    // Non-terminal: Add FIRST(next_sym) - {e}
+                                    for (char c : first_sets[next_sym]) {
+                                        if (c != 'e') {
+                                            follow_sets[symbol].insert(c);
+                                        }
+                                    }
+
+                                    if (first_sets[next_sym].find('e') == first_sets[next_sym].end()) {
+                                        all_nullable = false;
+                                        break;
+                                    }
+                                }
+                            }
+
+                            // If all following symbols are nullable
+                            if (all_nullable) {
+                                for (char c : follow_sets[lhs]) {
+                                    follow_sets[symbol].insert(c);
+                                }
+                            }
+                        }
+
+                        if (follow_sets[symbol].size() > before) {
+                            changed = true;
+                        }
                     }
                 }
             }
@@ -439,23 +521,64 @@ void FOLLOW(char X) {
 int main() {
     int n;
     cin >> n;
+    cin.ignore();
+
+    // Read grammar productions
     for (int i = 0; i < n; i++) {
-        string prod;
-        cin >> prod;              // e.g. E->E+T
-        g[prod[0]].push_back(prod.substr(3));
-        if (i == 0) start = prod[0];
+        string line;
+        getline(cin, line);
+
+        int pos = line.find("->");
+        char lhs = line[0];
+        string rhs = line.substr(pos + 2);
+
+        non_terminals.insert(lhs);
+
+        if (i == 0) {
+            start_symbol = lhs;
+        }
+
+        grammar[lhs].push_back(rhs);
     }
 
-    for (auto &p : g) FIRST(p.first);
-    followSet[start].insert('$');
-    for (auto &p : g) FOLLOW(p.first);
+    // Compute FIRST sets
+    computeFirst();
 
-    for (auto &p : g) {
-        cout << "FOLLOW(" << p.first << ") = { ";
-        for (char c : followSet[p.first]) cout << c << " ";
-        cout << "}\n";
+    // Compute FOLLOW sets
+    computeFollow();
+
+    // Print FOLLOW sets
+    vector<char> sorted_nts(non_terminals.begin(), non_terminals.end());
+    sort(sorted_nts.begin(), sorted_nts.end());
+
+    for (char nt : sorted_nts) {
+        cout << "FOLLOW(" << nt << ") = { ";
+
+        vector<char> follow_vec;
+        for (char c : follow_sets[nt]) {
+            follow_vec.push_back(c);
+        }
+
+        // Sort: $ first, then ), then others
+        sort(follow_vec.begin(), follow_vec.end(), [](char a, char b) {
+            if (a == '$') return true;
+            if (b == '$') return false;
+            if (a == ')') return true;
+            if (b == ')') return false;
+            return a < b;
+        });
+
+        for (int i = 0; i < follow_vec.size(); i++) {
+            cout << follow_vec[i];
+            if (i < follow_vec.size() - 1) cout << " ";
+        }
+
+        cout << " }" << endl;
     }
+
+    return 0;
 }
+
 /*
 4
 E->E+T
