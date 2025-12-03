@@ -1,9 +1,0 @@
-
-introduciton to network simulation tools
-(Wireshark)
-
-cisco packet tracer
-
-installation , and creation of topologies (start, ring , bus hybrid
-)
-
