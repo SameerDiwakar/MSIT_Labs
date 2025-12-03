@@ -52,3 +52,14 @@ int main() {
 
     return 0;
 }
+
+/*
+Enter number of productions: 3
+Enter productions (in the format A->B): 
+E->E+T
+E->T
+T->id
+Checking if the grammar is an operator precedence grammar...
+The grammar is an operator precedence grammar.
+
+*/
