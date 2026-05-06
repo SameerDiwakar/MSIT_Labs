@@ -1,8 +1,8 @@
 exp1 to design web page for branch : curl -O https://raw.githubusercontent.com/RedLordezh7Venom/MSIT_Labs/main/WT/exp2%20sameer.html
 exp2 to write html code for webpage containing 4 frames : curl -O https://raw.githubusercontent.com/RedLordezh7Venom/MSIT_Labs/main/WT/exp2%20sameer.html
 exp3 to design home page webpage : curl -O https://raw.githubusercontent.com/RedLordezh7Venom/MSIT_Labs/main/WT/exp3/najfgarh.html
-exp4 to use external internal and inline CSS to style college page : 
-exp5 create html js takes integer and outputs odd or even : 
+exp4 to use external internal and inline CSS to style college page :  curl -L -O https://raw.githubusercontent.com/RedLordezh7Venom/MSIT_Labs/main/WT/exp4.html
+exp5 create html js takes integer and outputs odd or even : curl -L -O https://raw.githubusercontent.com/RedLordezh7Venom/MSIT_Labs/main/WT/exp5.html
 exp 6 create html page with form : curl -L -O https://raw.githubusercontent.com/RedLordezh7Venom/MSIT_Labs/main/WT/exp6/exp6.html
 exp 7 create HTML file to save info: curl -L -O https://raw.githubusercontent.com/RedLordezh7Venom/MSIT_Labs/main/WT/wt%20EXPERIMENT%207_10_p.docx
 exp 8 write php to add data from file: curl -L -O https://raw.githubusercontent.com/RedLordezh7Venom/MSIT_Labs/main/WT/wt%20EXPERIMENT%207_10_p.docx
