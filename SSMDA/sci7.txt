@@ -1,0 +1,147 @@
+# Basic Operations in R
+
+# Arithmetic Operations
+cat("Addition =", 10 + 5, "\n")
+cat("Subtraction =", 10 - 5, "\n")
+cat("Multiplication =", 10 * 5, "\n")
+cat("Division =", 10 / 5, "\n")
+cat("Power =", 10^5, "\n")
+cat("Modulus =", 10 %% 3, "\n")
+cat("Integer Division =", 10 %/% 5, "\n\n")
+
+# Relational Operators
+a <- 10
+b <- 5
+
+cat("a > b =", a > b, "\n")
+cat("a < b =", a < b, "\n")
+cat("a == b =", a == b, "\n")
+cat("a != b =", a != b, "\n\n")
+
+# Logical Operators
+x <- TRUE
+y <- FALSE
+
+cat("x AND y =", x & y, "\n")
+cat("x OR y =", x | y, "\n")
+cat("NOT x =", !x, "\n\n")
+
+# Vector Operations
+v1 <- c(1,2,3)
+v2 <- c(4,5,6)
+
+cat("Vector Addition =", v1 + v2, "\n")
+cat("Vector Multiplication =", v1 * v2, "\n\n")
+
+# Matrix Operations
+m1 <- matrix(c(1,2,3,4), 2, 2)
+m2 <- matrix(c(5,6,7,8), 2, 2)
+
+cat("Matrix Addition:\n")
+print(m1 + m2)
+
+cat("Matrix Multiplication:\n")
+print(m1 %*% m2)
+
+# Built-in Functions
+cat("Square Root =", sqrt(25), "\n")
+cat("Sum =", sum(v1), "\n")
+cat("Mean =", mean(v1), "\n")
+cat("Maximum =", max(v2), "\n")
+cat("Minimum =", min(v2), "\n")
+
+
+EXP 8 Scatter Residual Outliers Influential Points
+ 
+
+x <- c(1,2,3,4,5,6,7,8,20)
+y <- c(2,4,5,7,8,9,25)
+
+# Linear Regression Model
+model <- lm(y ~ x)
+
+# 1. Scatter Diagram
+plot(x, y,
+     main = "Scatter Diagram",
+     xlab = "X Values",
+     ylab = "Y Values",
+     col = "blue",
+     pch = 19)
+
+# Regression Line
+abline(model, col = "red")
+
+# 2. Residual Plot
+plot(model$fitted.values,
+     model$residuals,
+     main = "Residual Plot",
+     xlab = "Fitted Values",
+     ylab = "Residuals",
+     col = "green",
+     pch = 19)
+
+abline(h = 0, col = "red")
+
+# 3. Outlier Detection
+plot(x, y,
+     main = "Outlier Detection",
+     col = "blue",
+     pch = 19)
+
+text(20, 25, "Outlier", pos = 4, col = "red")
+
+# 4. Influential Points (Cook's Distance)
+plot(cooks.distance(model),
+     type = "h",
+     main = "Cook's Distance",
+     xlab = "Observation Number",
+     ylab = "Distance")
+
+ 
+hatvalues(model)
+
+
+9 Correlation
+
+
+x <- c(10,20,30,40,50)
+y <- c(15,25,35,45,60)
+
+correlation <- cor(x, y)
+
+print(correlation)
+
+plot(x, y,
+     main = "Correlation Graph",
+     xlab = "X Values",
+     ylab = "Y Values",
+     col = "blue",
+     pch = 19)
+
+abline(lm(y ~ x), col = "red")
+
+10 Time series
+
+temp <- c(18,20,24,28,32,35,34,33,30,26,22,19)
+
+ts_data <- ts(temp,
+              start = c(2024,1),
+              frequency = 12)
+
+print(ts_data)
+
+plot(ts_data,
+     main = "Monthly Temperature Time Series",
+     xlab = "Month",
+     ylab = "Temperature",
+     col = "blue",
+     lwd = 2)
+
+# Moving Average
+ma <- filter(ts_data, rep(1/3,3), sides = 2)
+
+lines(ma, col = "red", lwd = 2)
+
+forecast <- predict(HoltWinters(ts_data))
+
+print(forecast)

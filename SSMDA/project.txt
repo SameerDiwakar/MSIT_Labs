@@ -1,0 +1,10 @@
+1.sci
+2.sci
+basic.sci curl "https://raw.githubusercontent.com/RedLordezh7Venom/MSIT_Labs/main/SSMDA/basic.sci"
+exp4.docx curl -L -O
+project.txt 
+sci1.docx curl -L -O
+sci2.docx curl -L -O
+sci3.docx curl -L -O
+sci45.docx curl -L -O
+sci6.docx curl -L -O
