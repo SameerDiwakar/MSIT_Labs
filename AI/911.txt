@@ -1,0 +1,64 @@
+ Write a program to remove stop words for a given passage from a text file from a text file
+using NLTK.
+Source Code:
+import nltk
+from nltk.corpus import stopwords
+from nltk.tokenize import word_tokenize
+nltk.download('punkt')
+nltk.download('stopwords')
+# Take input from user
+text = input("Enter a sentence: ")
+words = word_tokenize(text)
+stop_words = set(stopwords.words('english'))
+filtered_words = [word for word in words if word.lower() not in stop_words]
+print("\nAfter Removing Stop Words:")
+print(" ".join(filtered_words))
+Output:
+Enter a sentence: This is a simple example to show how the program removes stop words from
+a sentence.
+After Removing Stop Words:
+simple example show program removes stop words sentence .
+
+Write a program to implement stemming for a given sentence using NLTK.
+Source Code:
+import nltk
+from nltk.stem import PorterStemmer
+from nltk.tokenize import word_tokenize
+nltk.download('punkt')
+sentence = input("Enter a sentence: ")
+words = word_tokenize(sentence)
+stemmer = PorterStemmer()
+stemmed_words = [stemmer.stem(word) for word in words]
+print("\nStemmed Words:")
+print(stemmed_words)
+Output:
+Enter a sentence: The player was running and enjoying the games happily
+Stemmed Words:
+['the', 'player', 'wa', 'run', 'and', 'enjoy', 'the', 'game', 'happili']
+
+
+Write a program to POS (part of speech) tagging for the give sentence using NLTK.
+Source Code:
+import nltk
+from nltk.tokenize import word_tokenize
+from nltk import pos_tag
+nltk.download('punkt')
+nltk.download('averaged_perceptron_tagger')
+sentence = input("Enter a sentence: ")
+words = word_tokenize(sentence)
+tagged_words = pos_tag(words)
+print("\nPOS Tagging:")
+for word, tag in tagged_words:
+print(f"{word} -> {tag}")
+Output:
+Enter a sentence: The quick brown fox jumps over the lazy dog
+POS Tagging:
+The -> DT
+quick -> JJ
+brown -> NN
+fox -> NN
+jumps -> VBZ
+over -> IN
+the -> DT
+lazy -> JJ
+dog -> NN

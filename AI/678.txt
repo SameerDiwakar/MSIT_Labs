@@ -1,0 +1,86 @@
+str1 = input("Enter a sentence: ")
+output = ""
+for i in str1:
+    if i.isalnum() or i == " ":
+        output += i
+print("Removed Punctuation:\n", output)
+
+Enter a sentence: The cat, which was very fluffy!, sat on the "mat".Removed Punctuation:The cat which was very fluffy sat on the mat
+
+str1 = input("Enter a sentence to sort alphabetically: ")
+words = str1.split()
+
+words_sorted = sorted(words, key=lambda x: x.lower())
+
+sorted_sent = ' '.join(words_sorted)
+
+print("Sentence sorted alphabetically:\n", sorted_sent)
+
+
+
+import random
+
+words = ["python", "hangman", "programming", "computer", "keyboard"]
+word = random.choice(words)
+guessed = set()
+lives = 6
+
+while lives > 0:
+    display = "".join([c if c in guessed else "_" for c in word])
+    print(display)
+    
+    if "_" not in display:
+        print("You won!")
+        break
+        
+    guess = input("Guess a letter: ").lower()
+    
+    if guess in guessed:
+        print("Already guessed.")
+        continue
+        
+    guessed.add(guess)
+    
+    if guess not in word:
+        lives -= 1
+        print(f"Wrong! Lives left: {lives}")
+else:
+    print(f"You lost! The word was: {word}")
+
+Guess a letter: a
+a
+Guess a letter: ei
+Wrong! Lives left: 5
+a_
+Guess a letter: i
+Wrong! Lives left: 4
+a_
+Guess a letter: o
+oa
+Guess a letter: u
+Wrong! Lives left: 3
+oa_
+Guess a letter: v Wrong! Lives left: 2
+oa_
+Guess a letter: q
+Wrong! Lives left: 1
+oa
+Guess a letter: p
+Wrong! Lives left: 0
+You lost! The word was: keyboard
+Guess a letter: a
+a _a
+Guess a letter; e
+Wrong! Lives left: 5
+Guess a letter: i
+Wrong! Lives left: 4
+Guess a letter: o
+Wrong! Lives left: 3
+Guess a letter: h
+ha_a_
+Guess a letter: n
+han_an
+Guess a letter: m
+han_man
+Guess a letter: g
+hangman
