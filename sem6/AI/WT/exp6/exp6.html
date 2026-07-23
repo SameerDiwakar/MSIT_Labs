@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Registration Form</title>
+  <style>
+    body {
+      font-family: Arial;
+      margin: 20px;
+    }
+    fieldset {
+      margin-bottom: 15px;
+      padding: 10px;
+    }
+    legend {
+      font-weight: bold;
+    }
+    label {
+      display: block;
+      margin-top: 8px;
+    }
+    textarea {
+      width: 100%;
+      height: 80px;
+    }
+    footer {
+      margin-top: 20px;
+      padding: 10px;
+      background: #f2f2f2;
+      text-align: center;
+      font-size: 14px;
+    }
+  </style>
+  <link rel="stylesheet" href="style.css">
+
+  <script>
+    function displayData() {
+      let name = document.getElementById("name").value.trim();
+      let email = document.getElementById("email").value.trim();
+      let mobile = document.getElementById("mobile").value.trim();
+      let address = document.getElementById("address").value.trim();
+      let qualification = document.getElementById("qualification").value;
+
+      // Validation
+      if (name === "") {
+        alert("Name is required");
+        return;
+      }
+
+      let emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+      if (!email.match(emailPattern)) {
+        alert("Enter valid email");
+        return;
+      }
+
+      if (mobile.length !== 10 || isNaN(mobile)) {
+        alert("Enter valid 10-digit mobile number");
+        return;
+      }
+
+      if (qualification === "") {
+        alert("Select qualification");
+        return;
+      }
+
+      // Gender
+      let gender = document.querySelector('input[name="gender"]:checked');
+      gender = gender ? gender.value : "Not selected";
+
+      // Colors
+      let colors = document.querySelectorAll('input[name="color"]:checked');
+      let colorList = Array.from(colors).map(c => c.value).join(", ");
+
+      // Skills
+      let skills = document.querySelectorAll('input[name="skills"]:checked');
+      let skillList = Array.from(skills).map(s => s.value).join(", ");
+
+      // Output
+      let output = `
+Name: ${name}
+Email: ${email}
+Mobile: ${mobile}
+Gender: ${gender}
+Favorite Colors: ${colorList}
+Address: ${address}
+Qualification: ${qualification}
+Skills: ${skillList}
+      `;
+
+      document.getElementById("output").value = output;
+    }
+  </script>
+
+</head>
+
+<body>
+
+<h2>Registration Form</h2>
+
+<form id="regForm">
+
+  <!-- Personal Section -->
+  <fieldset>
+    <legend>Personal Section</legend>
+
+    <label>Name:
+      <input type="text" id="name" placeholder="Enter your name">
+    </label>
+
+    <label>Email:
+      <input type="email" id="email" placeholder="Enter email">
+    </label>
+
+    <label>Mobile No:
+      <input type="tel" id="mobile" placeholder="10-digit number">
+    </label>
+
+    <label>Date of Birth:
+      <input type="date" id="dob">
+    </label>
+
+    <label>Password:
+      <input type="password" id="password">
+    </label>
+
+    <label>Gender:</label>
+    <input type="radio" name="gender" value="Male"> Male
+    <input type="radio" name="gender" value="Female"> Female
+
+    <label>Favorite Color:</label>
+    <input type="checkbox" name="color" value="Red"> Red
+    <input type="checkbox" name="color" value="Blue"> Blue
+    <input type="checkbox" name="color" value="Green"> Green
+
+    <label>Upload Profile Photo:
+      <input type="file">
+    </label>
+
+    <label>Address:</label>
+    <textarea id="address"></textarea>
+
+  </fieldset>
+
+  <!-- Educational Section -->
+  <fieldset>
+    <legend>Educational Section</legend>
+
+    <label>Highest Qualification:</label>
+    <select id="qualification">
+      <option value="">Select</option>
+      <option>High School</option>
+      <option>Diploma</option>
+      <option>Graduate</option>
+      <option>Post Graduate</option>
+    </select>
+
+    <label>Experience (Years):
+      <input type="number" min="0" max="50">
+    </label>
+
+    <label>Skills:</label>
+    <input type="checkbox" name="skills" value="HTML"> HTML
+    <input type="checkbox" name="skills" value="CSS"> CSS
+    <input type="checkbox" name="skills" value="JavaScript"> JavaScript
+    <input type="checkbox" name="skills" value="React JS"> ReactJS
+    <input type="checkbox" name="skills" value="Node JS"> NodeJS
+
+    <label>Preferred Interview Time:
+      <input type="time">
+    </label>
+
+    <label>Portfolio URL:
+      <input type="url" placeholder="https://example.com">
+    </label>
+
+  </fieldset>
+
+  <button type="button" onclick="displayData()">Submit</button>
+  <button type="reset">Clear</button>
+
+</form>
+
+<h3>Output:</h3>
+<textarea id="output" readonly></textarea>
+
+<footer>
+  <p>
+    Name: Sameer Diwakar <br>
+    Enrollment No: 02396302723 <br>
+    Branch: CSE-E
+  </p>
+</footer>
+
+</body>
+</html>
